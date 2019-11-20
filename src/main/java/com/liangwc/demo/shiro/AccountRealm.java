@@ -3,9 +3,11 @@ package com.liangwc.demo.shiro;
 import com.liangwc.demo.base.lang.Constants;
 import com.liangwc.demo.dao.UserMapper;
 import com.liangwc.demo.domain.User;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -33,6 +35,9 @@ public class AccountRealm extends AuthorizingRealm {
         if (user.getStatus() == Constants.STATUS_CLOSED) {
             throw new LockedAccountException(user.getName());
         }
-        return null;
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, token.getCredentials(), getName());
+        Session session = SecurityUtils.getSubject().getSession();
+        session.setAttribute("user", user);
+        return info;
     }
 }

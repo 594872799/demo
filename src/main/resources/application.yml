@@ -4,3 +4,55 @@ spring:
     url: jdbc:mysql://localhost/db_mblog?useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
     username: root
     password: 123456
+  freemarker:
+    suffix: .ftl
+    content-type: text/html
+    charset: UTF-8
+    cache: false
+    template-loader-path:
+      - classpath:/templates
+    check-template-location: true
+    settings:
+      classic_compatible: true #处理空值
+      template_exception_handler: rethrow
+      template_update_delay: 0
+      datetime_format: yyyy-MM-dd HH:mm
+      number_format: 0.##
+      auto_import: /utils.ftl as utils
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+shiro:
+  web:
+    enabled: true
+  annotations:
+    enabled: false
+  loginUrl: /login
+  successUrl: /index
+  unauthorizedUrl: /error/reject.html
+  sessionManager:
+    cookie:
+      maxAge: 604800
+  rememberMeManager:
+    cookie:
+      maxAge: 604800
+site:
+  version: 3.5.0
+  location: ${user.dir}
+  controls:
+    # 注册开关
+    register: true
+    # 注册开启邮箱验证
+    register_email_validate: false
+    # 发布文章开关
+    post: true
+    # 评论开关
+    comment: true
+  options:
+    theme: classic
+    site_logo: /dist/images/logo/logo.png
+    site_favicon: /dist/images/logo/m.png
+    storage_max_width: 800
+    storage_limit_size: 2
+    editor: markdown
+    thumbnail_channel_size: 200x112
+    thumbnail_post_size: 360x200
