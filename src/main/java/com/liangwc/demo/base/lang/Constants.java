@@ -6,4 +6,8 @@ package com.liangwc.demo.base.lang;
  */
 public interface Constants {
     int STATUS_CLOSED = 1;
+
+    String ROLE_ADMIN = "admin";
+
+    int ERROR_CODE = 500;
 }

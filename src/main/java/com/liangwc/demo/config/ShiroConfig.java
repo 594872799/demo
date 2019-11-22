@@ -41,7 +41,7 @@ public class ShiroConfig {
         hashMap.put("/dist/**", "anon");
         hashMap.put("/error/**", "anon");
         hashMap.put("/login", "anon");
-        hashMap.put("/index", "anon");
+        hashMap.put("/register", "anon");
         // 其他路径均需要身份认证，一般位于最下面，优先级最低
         hashMap.put("/**", "authc");
 

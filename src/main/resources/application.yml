@@ -19,6 +19,18 @@ spring:
       datetime_format: yyyy-MM-dd HH:mm
       number_format: 0.##
       auto_import: /utils.ftl as utils
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 200
+        max-wait: -1
+        max-idle: 10
+        min-idle: 0
+    timeout: 1000
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
 shiro:
@@ -35,24 +47,3 @@ shiro:
   rememberMeManager:
     cookie:
       maxAge: 604800
-site:
-  version: 3.5.0
-  location: ${user.dir}
-  controls:
-    # 注册开关
-    register: true
-    # 注册开启邮箱验证
-    register_email_validate: false
-    # 发布文章开关
-    post: true
-    # 评论开关
-    comment: true
-  options:
-    theme: classic
-    site_logo: /dist/images/logo/logo.png
-    site_favicon: /dist/images/logo/m.png
-    storage_max_width: 800
-    storage_limit_size: 2
-    editor: markdown
-    thumbnail_channel_size: 200x112
-    thumbnail_post_size: 360x200

@@ -51,6 +51,10 @@ public class Result<T> implements Serializable {
         return new Result<>(Result.SUCCESS, message, data);
     }
 
+    public static <T> Result<T> failure() {
+        return failure(null);
+    }
+
     public static <T> Result<T> failure(String message) {
         return failure(Result.ERROR, message);
     }

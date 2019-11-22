@@ -1,6 +1,7 @@
 package com.liangwc.demo.controller;
 
 import com.liangwc.demo.base.lang.Result;
+import com.liangwc.demo.base.lang.ViewConstants;
 import com.liangwc.demo.base.util.MD5Utils;
 import com.liangwc.demo.domain.User;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,13 +37,16 @@ public class LoginController {
     }
 
     @PostMapping(value = "/login")
-    public String login(String username, String password, @RequestParam(value = "remeberMe", defaultValue = "0") Boolean rememberMe) {
+    public String login(String username, String password, @RequestParam(value = "remeberMe", defaultValue = "0") Boolean rememberMe, ModelMap model) {
+        String view = "/classic/auth/login";
+
         Result<User> result = executeLogin(username, password, rememberMe);
         if (result.isOk()) {
-            return "success";
+            view = String.format(ViewConstants.REDIRECT_USER_HOME, result.getData().getId());
         } else {
-            return "error";
+            model.put("message", result.getMessage());
         }
+        return view;
     }
 
     public Result<User> executeLogin(String username, String password, boolean rememberMe) {
