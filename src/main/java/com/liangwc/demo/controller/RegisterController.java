@@ -30,11 +30,11 @@ public class RegisterController {
 
     @GetMapping("/register")
     public String goToRegister() {
-        Subject subject = SecurityUtils.getSubject();
-        User user = (User) subject.getPrincipal();
-        if (null != user) {
-            return String.format(ViewConstants.REDIRECT_USER_HOME, user.getId());
-        }
+//        Subject subject = SecurityUtils.getSubject();
+//        User user = (User) subject.getPrincipal();
+//        if (null != user) {
+//            return String.format(ViewConstants.REDIRECT_USER_HOME, user.getId());
+//        }
         return "/classic/auth/register";
     }
 
