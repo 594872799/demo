@@ -23,7 +23,7 @@
     gender, role_id, comments, posts, signature
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from mto_user
     where id = #{id,jdbcType=BIGINT}
@@ -214,5 +214,11 @@
     <include refid="Base_Column_List" />
     from mto_user
     where username = #{usernmae,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from mto_user
+    where email = #{email,jdbcType=VARCHAR}
   </select>
 </mapper>

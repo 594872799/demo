@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class AccountRealm extends AuthorizingRealm {
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {

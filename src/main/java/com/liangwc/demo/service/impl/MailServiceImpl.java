@@ -36,7 +36,7 @@ public class MailServiceImpl implements MailService {
     @Override
     public Result send(String template, String email) {
         String code = RandomStringUtils.randomNumeric(6);
-        redisTemplate.opsForValue().set(email, code, 60L, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(email, code, 300L, TimeUnit.SECONDS);
         Map<String, Object> context = new HashMap<>(1);
         context.put("code", code);
         try {

@@ -10,4 +10,9 @@ public interface Constants {
     String ROLE_ADMIN = "admin";
 
     int ERROR_CODE = 500;
+
+    /**
+     * 默认头像
+     */
+    String AVATAR = "https://en.gravatar.com/userimage/154673030/b9a54b5b990a61cc074668b2e2a0b8c0.png";
 }
